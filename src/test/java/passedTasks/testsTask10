@@ -1,0 +1,58 @@
+1. curl --location --request GET 'https://postman-echo.com/headers' \ --header 'my-header: Test header to Postman, with support of QA Crash Course'
+Response:
+{
+    "headers": {
+        "x-forwarded-proto": "https",
+        "x-forwarded-port": "443",
+        "host": "postman-echo.com",
+        "x-amzn-trace-id": "Root=1-6184660b-195482e3184548cf76685fc1",
+        "my-header": "Test header to Postman, with support of QA Crash Course",
+        "user-agent": "PostmanRuntime/7.28.4",
+        "accept": "*/*",
+        "cache-control": "no-cache",
+        "postman-token": "d03c5ebd-96a1-4c90-bec6-664b3d59ed4e",
+        "accept-encoding": "gzip, deflate, br",
+        "cookie": "sails.sid=s%3A7OgSnzdQWL38ok3gwWbQcZwRDuwWVhoq.wIlkm%2B5RihxFaVY0oSzbZrCdtI3NYMDgrXXaFaboGOc"
+    }
+}
+
+Test:
+pm.test("Статус код - 200!", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Мой заголовок вернулся в теле ответа!", function () {
+    pm.response.to.have.jsonBody('headers.my-sample-header', 'Lorem ipsum dolor sit amet');
+});
+
+
+
+2. curl --location --request GET 'https://postman-echo.com/delay/3'
+Response:
+{
+    "delay": "3"
+}
+
+Test:
+pm.test("Статус код - 200!", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Равно ли время отправления ответа, времени получения ответа", function () {
+    pm.expect(pm.response.text()).to.eql(pm.response.headers.get('date'))
+});
+
+
+
+3. curl --location --request GET 'https://postman-echo.com/time/now'
+Response:
+Thu, 04 Nov 2021 23:16:03 GMT
+
+Test:
+pm.test("Статус код - 200!", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Равно ли время в ответе, времени отправлению ответа", function () {
+    pm.expect(pm.response.text()).to.eql(pm.response.headers.get('date'))
+});
