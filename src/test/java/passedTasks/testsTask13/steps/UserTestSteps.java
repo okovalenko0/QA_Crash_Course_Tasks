@@ -39,9 +39,9 @@ public class UserTestSteps {
     @When("I search for product {string}")
     public void iSearchForProduct(String product) {
         HomePage homePage = new HomePage(driver, wait);
-        ProductResultPage productResultPage = homePage.search(product);
+        SearchResultPage searchResultPage = homePage.search(product);
 
-        productResultPage.getProduct();
+        searchResultPage.getProduct();
     }
 
     @Then("The product price should have a discount")
@@ -55,10 +55,10 @@ public class UserTestSteps {
     @When("I search for product {string}, and mark sorting by seller {string}")
     public void iSearchForProductAndMarkSortingBySeller(String product, String seller) {
         HomePage homePage = new HomePage(driver, wait);
-        ProductResultPage productResultPage = homePage.search(product);
+        SearchResultPage searchResultPage = homePage.search(product);
 
-        productResultPage.markSeller(seller);
-        productResultPage.getProduct();
+        searchResultPage.markSeller(seller);
+        searchResultPage.getProduct();
     }
 
     @Then("The product seller {string} must match the one specified earlier")
@@ -73,8 +73,8 @@ public class UserTestSteps {
         HomePage homePage = new HomePage(driver, wait);
         ProductPage productPage = new ProductPage(driver, wait);
 
-        ProductResultPage productResultPage = homePage.search(product);
-        productResultPage.getProduct();
+        SearchResultPage searchResultPage = homePage.search(product);
+        searchResultPage.getProduct();
         productPage.addToCart();
     }
 

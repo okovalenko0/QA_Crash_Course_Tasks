@@ -3,23 +3,27 @@ package pagesRozetka;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ProductResultPage extends BasePage {
+import java.util.ArrayList;
+import java.util.List;
+
+public class SearchResultPage extends BasePage {
 
     private final By results = new By.ByCssSelector("section.content div.goods-tile");
-    //private final By titlePath = new By.ByCssSelector("span.goods-tile__title");
+    private final By titlePath = new By.ByCssSelector("span.goods-tile__title");
     private final By sellerRozetkaCheckbox = new By.ByXPath("//div[@data-filter-name='seller']//input[@id='Rozetka']/parent::a");
     private final By sellerRUOtherCheckbox = new By.ByXPath("//input[@id='Другие продавцы']");
     private final By sellerUAOtherCheckbox = new By.ByXPath("//input[@id='Інші продавці']");
 
-    public ProductResultPage(WebDriver driver, WebDriverWait wait) {
+    public SearchResultPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
     }
 
-/*    public List<String> getResultTitles(){
+    public List<String> getResultTitles(){
         List<WebElement> resultWebElements = driver.findElements(results);
         List<String> titles = new ArrayList<>();
         for(WebElement resultElement : resultWebElements){
@@ -27,7 +31,7 @@ public class ProductResultPage extends BasePage {
             titles.add(title.getText());
         }
         return titles;
-    }*/
+    }
 
     public void getProduct(){
         wait.until(ExpectedConditions.presenceOfElementLocated(results));

@@ -59,8 +59,6 @@ public class testsTask9 {
                 e.printStackTrace();
             }
         }
+        driver.quit();
     }
-
-    @AfterClass
-    public void closeBrowser(){ driver.quit(); }
 }

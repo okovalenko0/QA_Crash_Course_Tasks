@@ -8,25 +8,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CartPage extends BasePage {
 
-    private By moreActionsButton = new By.ByXPath("//button[@id='cartProductActions0']");
-    private By deleteActionButton = new By.ByXPath("//rz-trash-icon/button");
-    private By addWishlistActioncButton = new By.ByXPath("//rz-add-to-wishlist-btn/button");
-    private By doOrderButton = new By.ByCssSelector("a.cart-receipt__submit");
-    private By continueBuys = new By.ByCssSelector("a.cart-footer__continue");
-    private By emptyCart = new By.ByCssSelector("h4.cart-dummy__heading");
+    private final By moreActionsButton = new By.ByXPath("//button[@id='cartProductActions0']");
+    private final By deleteActionButton = new By.ByXPath("//rz-trash-icon/button");
+    //private final By addWishlistActioncButton = new By.ByXPath("//rz-add-to-wishlist-btn/button");
+    private final By doOrderButton = new By.ByCssSelector("a.cart-receipt__submit");
+    private final By continueBuys = new By.ByCssSelector("a.cart-footer__continue");
+    private final By emptyCart = new By.ByCssSelector("h4.cart-dummy__heading");
 
     public CartPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
     }
 
-    public void performOrder(){
+/*    public void performOrder(){
         driver.findElement(doOrderButton).click();
     }
 
     public void continueBuys(){
         driver.findElement(continueBuys).click();
-    }
+    }*/
 
     public String deleteFirstElementInCart(){
         wait.until(ExpectedConditions.elementToBeClickable(doOrderButton));

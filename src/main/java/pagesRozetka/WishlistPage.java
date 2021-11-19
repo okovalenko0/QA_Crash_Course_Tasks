@@ -11,8 +11,8 @@ import java.util.List;
 //WORKING ONLY WITH AUTHORIZED USER
 public class WishlistPage extends BasePage {
 
-    By wishlistElementsList = new By.ByCssSelector("div.goods-tile__inner");
-    By wishlistElementsTitle = new By.ByCssSelector("div.goods-tile__inner span.goods-tile__title");
+    private final By wishlistElementsList = new By.ByCssSelector("div.goods-tile__inner");
+    private final By wishlistElementsTitle = new By.ByCssSelector("div.goods-tile__inner span.goods-tile__title");
 
     public WishlistPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;

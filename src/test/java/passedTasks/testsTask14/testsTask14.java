@@ -35,6 +35,7 @@ public class testsTask14 {
         webDriverFactory = new WebDriverFactory();
         driver = webDriverFactory.createWebDriver(DriverType.CHROME);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        homePage = new HomePage(driver, wait);
 
         driver.get("https://www.amazon.com/");
     }
@@ -43,7 +44,8 @@ public class testsTask14 {
     public void isThePriceInTheRightRange(){
         String query = "notebook computer";
         Integer low = 10, high = 1000;
-        homePage = new HomePage(driver, wait);
+
+
         searchResultPage = homePage.searchProduct(query);
         searchResultPage.setCustomPriceRange(low, high);
         Double price = searchResultPage.getPrice();
@@ -55,7 +57,6 @@ public class testsTask14 {
         String query = "phone", brandFromSearch;
         Integer brandId = 1, productId = 0;
 
-        HomePage homePage = new HomePage(driver, wait);
         searchResultPage = homePage.searchProduct(query);
         brandFromSearch = searchResultPage.selectBrand(brandId);
         productPage = searchResultPage.getProduct(productId);
@@ -68,7 +69,6 @@ public class testsTask14 {
         String query = "boat", cartMsg = "empty";
         Integer productId = 0;
 
-        HomePage homePage = new HomePage(driver, wait);
         searchResultPage = homePage.searchProduct(query);
         productPage = searchResultPage.getProduct(productId);
         cartPage = productPage.addToCart();
@@ -82,7 +82,6 @@ public class testsTask14 {
         String query = "car seat";
         Integer productId = 0;
 
-        HomePage homePage = new HomePage(driver, wait);
         searchResultPage = homePage.searchProduct(query);
         productPage = searchResultPage.getProduct(productId);
         cartPage = productPage.addToCart();

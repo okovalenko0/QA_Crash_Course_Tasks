@@ -32,10 +32,10 @@ public class testsTask12 {
     public void isTheDiscountOnProduct(){
         String query = "selenium";
         HomePage homePage = new HomePage(driver, wait);
-        ProductResultPage productResultPage = homePage.search(query);
+        SearchResultPage searchResultPage = homePage.search(query);
         ProductPage productPage = new ProductPage(driver, wait);
 
-        productResultPage.getProduct();
+        searchResultPage.getProduct();
         productPage.checkProductDiscount();
     }
 
@@ -44,11 +44,11 @@ public class testsTask12 {
         String query = "selenium";
         String sellerType = "Rozetka";
         HomePage homePage = new HomePage(driver, wait);
-        ProductResultPage productResultPage = homePage.search(query);
+        SearchResultPage searchResultPage = homePage.search(query);
         ProductPage productPage = new ProductPage(driver, wait);
 
-        productResultPage.markSeller(sellerType);
-        productResultPage.getProduct();
+        searchResultPage.markSeller(sellerType);
+        searchResultPage.getProduct();
         Assert.assertTrue(productPage.checkProductSeller().contains(sellerType));
     }
 
@@ -60,8 +60,8 @@ public class testsTask12 {
         ProductPage productPage = new ProductPage(driver, wait);
         CartPage cartPage = new CartPage(driver, wait);
 
-        ProductResultPage productResultPage = homePage.search(query);
-        productResultPage.getProduct();
+        SearchResultPage searchResultPage = homePage.search(query);
+        searchResultPage.getProduct();
         productPage.addToCart();
 
         String currentMessage = cartPage.deleteFirstElementInCart();

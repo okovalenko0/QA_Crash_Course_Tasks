@@ -1,56 +1,48 @@
-package currectTasks.testsTask15;
+package currectTasks.testsTask16;
 
+import driverFactory.DriverType;
+import driverFactory.WebDriverFactory;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-import pagesRozetka.*;
-import driverFactory.*;
+import org.testng.annotations.BeforeSuite;
+import pagesAmazon.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDate;
-import java.util.List;
 
-
-public class testsTask15 {
+public abstract class BaseClass {
+    WebDriverFactory webDriverFactory;
     WebDriver driver;
     WebDriverWait wait;
-    WebDriverFactory webDriverFactory;
 
-    @DataProvider(name = "searchDataQuery")
-    public Object[][] createData() {
-        return new Object[][]{
-                {"huggies"},
-                {"selenium"},
-                {"soap"}
-        };
+    HomePage homePage;
+    SearchResultPage searchResultPage;
+    ProductPage productPage;
+    CartPage cartPage;
+    BuyPage buyPage;
+
+    @BeforeSuite
+    public void setUp() {
+        System.out.println("Starting all setup activities.");
+
+        webDriverFactory = new WebDriverFactory();
+        driver = webDriverFactory.createWebDriver(DriverType.CHROME);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        homePage = new HomePage(driver, wait);
     }
 
     @BeforeMethod
     public void startBrowser(){
-        webDriverFactory = new WebDriverFactory();
-        driver = webDriverFactory.createWebDriver(DriverType.CHROME);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        driver.get("https://rozetka.com.ua");
-    }
-
-    @Test(dataProvider = "searchDataQuery")
-    public void mainTest(String query){
-        HomePage homePage = new HomePage(driver, wait);
-        SearchResultPage searchResultPage = homePage.search(query);
-
-        List<String> titles = searchResultPage.getResultTitles();
-        Assert.assertTrue(titles.get(0).toLowerCase().contains(query));
+        driver.get("https://www.amazon.com/");
     }
 
     @AfterMethod(alwaysRun = true)
@@ -64,6 +56,12 @@ public class testsTask15 {
                 e.printStackTrace();
             }
         }
+    }
+
+    @AfterSuite
+    public void closeUp() {
         driver.quit();
+
+        System.out.println("All close up activities completed.");
     }
 }

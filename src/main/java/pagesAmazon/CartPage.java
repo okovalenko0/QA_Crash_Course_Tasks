@@ -7,7 +7,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CartPage extends BasePage {
 
     //Confirm add to cart button locator
-    private final By confirmAddToCartButton = new By.ByXPath("//span[@class='a-button-inner']/a[contains(text(), 'Cart')]");
+    //private final By firstConfirmButton = new By.ByXPath("//span[@class='a-button-inner']//a[@class='a-button-text']");
+    private final By cartButton = new By.ByXPath("//a[@id='nav-cart']");
     //Proceed to checkout button locator
     private final By proceedToCheckoutButtonCart = new By.ByXPath("//input[@name='proceedToRetailCheckout']");
     //Delete product button locator
@@ -36,8 +37,8 @@ public class CartPage extends BasePage {
     }
 
     //Add to cart
-    public void confirmAddToCart(){
-        driver.findElement(confirmAddToCartButton).click();
+    public void confirmAddToCart() {
+        driver.findElement(cartButton).click();
     }
 
     //Proceed checkout
