@@ -26,4 +26,4 @@ Feature: User API tests
 
     Examples:
       | product    |
-      | notebook   |
+      | notebook  |
