@@ -66,7 +66,7 @@ public class testsTask14 {
 
     @Test
     public void deleteElementInCart(){
-        String query = "boat", cartMsg = "empty";
+        String query = "pants", cartMsg = "empty";
         Integer productId = 0;
 
         searchResultPage = homePage.searchProduct(query);
