@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="testsTask17_Suite">
+    <test name="testsTask17_Test">
+        <packages>
+            <package name="currectTasks.testsTask17"/>
+        </packages>
+    </test>
+</suite>

@@ -1,11 +1,11 @@
-package currectTasks.testsTask16;
+package currectTasks.testsTask17;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class testsTask16 extends BaseClass {
+public class testsTask17 extends BaseClass{
 
-    @Test
+    @Test(testName = "testsTask17_Test")
     public void isThePriceInTheRightRange(){
         String query = "notebook computer";
         Integer low = 10, high = 1000;
@@ -17,7 +17,7 @@ public class testsTask16 extends BaseClass {
         Assert.assertTrue(price > low && price < high);
     }
 
-    @Test(dependsOnMethods = "isThePriceInTheRightRange")
+    @Test(testName = "testsTask17_Test", dependsOnMethods = "isThePriceInTheRightRange")
     public void isTheProductOfMarkedBrand(){
         String query = "phone", brandFromSearch;
         Integer brandId = 1, productId = 0;
@@ -29,7 +29,7 @@ public class testsTask16 extends BaseClass {
         Assert.assertEquals(brandFromSearch, productPage.getBrandTitle());
     }
 
-    @Test(dependsOnMethods = "isTheProductOfMarkedBrand")
+    @Test(testName = "testsTask17_Test", dependsOnMethods = "isTheProductOfMarkedBrand")
     public void isTheDeleteMethodWorking(){
         String query = "pants", cartMsg = "empty";
         Integer productId = 0;
@@ -42,7 +42,7 @@ public class testsTask16 extends BaseClass {
         Assert.assertTrue(cartPage.deleteFirstElementInCart().contains(cartMsg));
     }
 
-    @Test(dependsOnMethods = "isTheDeleteMethodWorking")
+    @Test(testName = "testsTask17_Test", dependsOnMethods = "isTheDeleteMethodWorking")
     public void isTheBuyMethodWorking(){
         String query = "car seat";
         Integer productId = 0;
