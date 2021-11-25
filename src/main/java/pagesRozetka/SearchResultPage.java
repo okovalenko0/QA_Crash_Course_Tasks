@@ -46,18 +46,18 @@ public class SearchResultPage extends BasePage {
 
     public void markSeller(String sellerType){
         switch (sellerType) {
-            case ("Rozetka") -> {
+            case ("Rozetka"):
                 wait.until(ExpectedConditions.elementToBeClickable(sellerRozetkaCheckbox));
                 driver.findElement(sellerRozetkaCheckbox).click();
-            }
-            case ("Other RU") -> {
+                break;
+            case ("Other RU"):
                 wait.until(ExpectedConditions.elementToBeClickable(sellerRUOtherCheckbox));
                 driver.findElement(sellerRUOtherCheckbox).click();
-            }
-            case ("Other UA") -> {
+                break;
+            case ("Other UA"):
                 wait.until(ExpectedConditions.elementToBeClickable(sellerUAOtherCheckbox));
                 driver.findElement(sellerUAOtherCheckbox).click();
-            }
+                break;
         }
     }
 }
